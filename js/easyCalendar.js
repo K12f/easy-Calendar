@@ -18,8 +18,9 @@ function EasyCalendar() {
 	//配置
 	var conf = {
 		id: "#easyCalendar",
-		weekday: ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
-		month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+		weekday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+		month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+		backMsg:'Back',
 		data: [],
 		callback: null
 	};
@@ -29,6 +30,7 @@ function EasyCalendar() {
 				conf.id = configs.id ? configs.id : conf.id;
 				conf.weekday = configs.weekday ? configs.weekday : conf.weekday;
 				conf.month = configs.month ? configs.month : conf.month;
+				conf.backMsg = configs.backMsg ? configs.backMsg : conf.backMsg;
 				conf.data = configs.data ? configs.data : conf.data;
 				conf.callback = configs.callback ? configs.callback : conf.callback;
 			}
@@ -114,7 +116,7 @@ function EasyCalendar() {
 		EasyCalendar.prototype.render = function () {
 			var element = "<div class='calendar'>";
 			element += "<div class='month'><ul><li class='prev'>❮</li><li class='next'>❯</li><li class='text-center'>" + self.renderMonth () + "</li></ul>";
-			element += "<div class='back'><span class='pointer'>回到今天</span></div></div>";
+			element += "<div class='back'><span class='pointer'>"+conf.backMsg+"</span></div></div>";
 
 			element += self.renderWeek ();
 			element += "<ul class='days'>" + self.renderDay () + "</ul>";
@@ -167,7 +169,7 @@ function EasyCalendar() {
 					}
 					if (calDate.getFullYear () === self.getYear () && calDate.getMonth () === self.getMonth () && curDate === nowDate) {
 						//当前时间
-						element += "<li class="+ className +" data-time="+nowDateTime+"><p class="+pClass+">今天</p></li>";
+						element += "<li class="+ className +" data-time="+nowDateTime+"><p class="+pClass+">Today</p></li>";
 					}else {
 						element += "<li class="+ className + " data-time="+nowDateTime+"><p>" + nowDate + "</p></li>";
 					}

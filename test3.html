@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" type="text/css" href="css/easyCalendar.css"/>
+
+	<style>
+		.weekday {
+			background: #ff7ca2;
+			color: #fff !important
+		}
+		.weekend {
+			background: #e58dff;
+			color: #fff !important
+		}
+		.festival {
+			background: #ff0000;
+			color: #fff !important
+		}
+
+		.calendar .days .weekday:hover{
+			border-bottom: 0 solid;
+			background: #1abc9c;
+			color: #fff;
+			cursor: pointer;
+		}
+		.calendar .days .weekend:hover{
+			border-bottom: 0 solid;
+			background: #1abc9c;
+			color: #fff;
+			cursor: pointer;
+		}
+		.calendar .days .festival:hover{
+			border-bottom: 0 solid;
+			background: #1abc9c;
+			color: #fff;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+<div id="easyCalendar"></div>
+
+<script src="js/easyCalendar.js"></script>
+<script>
+	var conf = {
+		id: "#easyCalendar",
+		weekday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+		month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+		backMsg:'Back',
+		data: [],
+		callback: null
+	};
+	self.conf.data = [
+		{
+			"date": "2017-10-28",
+			"priceclass": "2"
+		},
+		{
+			"date": "2017-10-29",
+			"priceclass": "1"
+		},
+		{
+			"date": "2017-10-30",
+			"priceclass": "0"
+		},
+		{
+			"date": "2017-10-31",
+			"priceclass": "0"
+		},
+		{
+			"date": "2017-11-08",
+			"priceclass": "0"
+		},
+		{
+			"date": "2017-11-09",
+			"priceclass": "0"
+		},
+		{
+			"date": "2017-11-10",
+			"priceclass": "0"
+		},
+		{
+			"date": "2017-11-11",
+			"priceclass": "1"
+		}
+	];
+	self.conf.callback = self.calendarCallback;
+	new EasyCalendar().init (self.conf);
+
+	// 返回值: 1，普通:，2假日，3,特殊
+	function calendarCallback() {
+		var arg1 = arguments[0];
+		var arg2 = arguments[1];
+		var className = 'invalid', type = 0, index = -1;
+		var dates = arg2.map (function (e) {
+			return e.date;
+		});
+		index = dates.indexOf (arg1);
+		if (index === -1) {
+			return className;
+		}
+
+		type = parseInt (arg2[index].priceclass);
+		if (type === 0) {
+			className = 'weekday';
+		} else if (type === 1) {
+			className = 'weekend';
+		} else if (type === 2) {
+			className = 'festival';
+		}
+		return className;
+	}
+</script>
+</body>
+</html>
