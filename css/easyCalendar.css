@@ -1,0 +1,119 @@
+/*日历*/
+* {box-sizing:border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana,sans-serif;}
+
+.pointer {
+    cursor: pointer;
+}
+.calendar .month {
+    padding: 60px 25px;
+    padding-bottom: 50px;
+    width: 100%;
+    background: #1abc9c;
+}
+
+.calendar .month ul {
+    margin: 0;
+    padding: 0;
+}
+.text-center {
+    text-align: center;
+}
+
+.calendar .month ul li {
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.calendar .month .prev {
+    float: left;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.calendar .month .next {
+    float: right;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.calendar .month .back {
+    text-align: center;
+    margin-top: 20px;
+}
+.calendar .month .back span {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: 1px solid #fff;
+}
+.calendar .weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+}
+
+.calendar .weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+}
+
+.calendar .days {
+    padding: 10px 0;
+    background: #fff;
+    margin: 0;
+}
+
+.calendar .days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color: #000;
+    padding: 5px;
+    border: 1px solid #eee;
+}
+.calendar .days li p{
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+}
+
+.calendar .days .invalid{
+    color: #cbcbcb !important
+}
+.calendar .days .active {
+    background: #1abc9c;
+    color: #fff !important
+}
+
+
+.calendar .days .hover:hover{
+    border-bottom: 0 solid;
+    background: #1abc9c;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* 添加不同尺寸屏幕的样式 */
+@media screen and (max-width:720px) {
+    .calendar .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+    .calendar .weekdays li, .days li {width: 12.5%;}
+    .calendar .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+    .calendar .weekdays li, .days li {width: 12.2%;}
+}
